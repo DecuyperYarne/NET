@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using MyHowest;
+using System.Collections.Generic;
 
 namespace MVCVoorbeeld.Controllers {
     public class HomeController : Controller {
@@ -18,6 +20,15 @@ namespace MVCVoorbeeld.Controllers {
                 ViewBag.Zoekresultaat =
                     $"De gezochte groente is de {Array.IndexOf(groenten, zoekGroente) + 1}e uit de lijst";
             }
+            return View();
+        }
+        
+        public ViewResult Studenten() {
+            List<Student> studenten = new List<Student> {
+                new Student(23,"Yern",Graad.Voldoening),
+                new Student(25,"Leander",Graad.Onderscheiding)
+            };
+            ViewBag.Studenten = studenten;
             return View();
         }
     }
